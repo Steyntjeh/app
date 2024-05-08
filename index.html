@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <!-- Vereiste meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Een app met foto's van het o zo mooie Atletico Madrid">
+    <meta name="msapplication-TileColor" content="#E94343">
+    <meta name="theme-color" content="#E94343">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
+    <link rel="manifest" href="manifest.json">
+    <title>ATLETI</title>
+
+    <!-- Material.io bestanden (CSS & Font/icons)-->
+    <!-- Uitleg werking componenents: https://material.io/components?platform=web -->
+    <!-- Demo van components:         https://material-components.github.io/material-components-web-catalog/#/ -->
+    <!-- Demo en uitleg icons:        https://fonts.google.com/icons?selected=Material+Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>body{margin: 0;}</style>
+    <link rel="stylesheet" href="style.css">
+    <!-- Material.io bestanden (JS en registratie componenten) -->
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <script>const MDCBanner = mdc.banner.MDCBanner;const MDCCheckbox = mdc.checkbox.MDCCheckbox;const MDCChip = mdc.chips.MDCChip;const MDCChipSet = mdc.chips.MDCChipSet;const MDCCircularProgress = mdc.circularProgress.MDCCircularProgress;const MDCDataTable = mdc.dataTable.MDCDataTable;const MDCDialog = mdc.dialog.MDCDialog;const MDCDrawer = mdc.drawer.MDCDrawer;const MDCFloatingLabel = mdc.floatingLabel.MDCFloatingLabel;const MDCFormField = mdc.formField.MDCFormField;const MDCIconButtonToggle = mdc.iconButton.MDCIconButtonToggle;const MDCLineRipple = mdc.lineRipple.MDCLineRipple;const MDCLinearProgress = mdc.linearProgress.MDCLinearProgress;const MDCList = mdc.list.MDCList;const MDCMenu = mdc.menu.MDCMenu;const MDCMenuSurface = mdc.menuSurface.MDCMenuSurface;const MDCNotchedOutline = mdc.notchedOutline.MDCNotchedOutline;const MDCRadio = mdc.radio.MDCRadio;const MDCRipple = mdc.ripple.MDCRipple;const MDCSegmentedButton = mdc.segmentedButton.MDCSegmentedButton;const MDCSelect = mdc.select.MDCSelect;const MDCSlider = mdc.slider.MDCSlider;const MDCSnackbar = mdc.snackbar.MDCSnackbar;const MDCSwitch = mdc.switchControl.MDCSwitch;const MDCTabBar = mdc.tabBar.MDCTabBar;const MDCTextField = mdc.textField.MDCTextField;const MDCTooltip = mdc.tooltip.MDCTooltip;const MDCTopAppBar = mdc.topAppBar.MDCTopAppBar;</script>
+
+    <script>
+    
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("service-worker.js")
+      })
+
+    </script>
+</head>
+
+<body>
+ <!-- HTML web-elementen -->   
+ <aside class="mdc-drawer mdc-drawer--modal">
+  <div class="mdc-drawer__content">
+    <div class="logo">
+      <img src="images/logo.png">
+    </div>  
+    <nav class="mdc-list">
+      <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page" tabindex="0">
+        <span class="mdc-list-item__ripple"></span>
+        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>
+        <span class="mdc-list-item__text">Home</span>
+      </a>
+      <a class="mdc-list-item" href="#">
+        <span class="mdc-list-item__ripple"></span>
+        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">crop_original</i>
+        <span class="mdc-list-item__text">Images</span>
+      </a>
+      <a class="mdc-list-item" href="#">
+        <span class="mdc-list-item__ripple"></span>
+        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">shopping_bag</i>
+        <span class="mdc-list-item__text">Shop</span>
+      </a>
+      <a class="mdc-list-item" href="#">
+        <span class="mdc-list-item__ripple"></span>
+        <i class="material-icons mdc-list-item__graphic" aria-hidden="true">confirmation_number</i>
+        <span class="mdc-list-item__text">Tickets</span>
+      </a>
+    </nav>
+  </div>
+</aside>
+
+<div class="mdc-drawer-scrim"></div>
+
+ <header class="mdc-top-app-bar mdc-top-app-bar--fixed">
+    <div class="mdc-top-app-bar__row">
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+        <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">menu</button>
+        <span class="mdc-top-app-bar__title">Images</span>
+      </section>
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+        <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">search</button>
+        <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">settings</button>
+      </section>
+    </div>
+  </header>
+
+<main class="mdc-top-app-bar--fixed-adjust">
+  <div class="mdc-tab-bar" role="tablist">
+    <div class="mdc-tab-scroller">
+      <div class="mdc-tab-scroller__scroll-area">
+        <div class="mdc-tab-scroller__scroll-content">
+          <button class="mdc-tab" role="tab" aria-selected="true" tabindex="0">
+            <span class="mdc-tab__content">
+              <!-- <span class="mdc-tab__icon material-icons" aria-hidden="true">favorite</span> -->
+              <span class="mdc-tab__text-label">Match</span>
+            </span>
+            <span class="mdc-tab-indicator">
+              <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+            </span>
+            <span class="mdc-tab__ripple"></span>
+          </button>
+          <button class="mdc-tab" role="tab" aria-selected="true" tabindex="0">
+            <span class="mdc-tab__content">
+              <!-- <span class="mdc-tab__icon material-icons" aria-hidden="true">favorite</span> -->
+              <span class="mdc-tab__text-label">Training</span>
+            </span>
+            <span class="mdc-tab-indicator">
+              <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+            </span>
+            <span class="mdc-tab__ripple"></span>
+          </button>
+          <button class="mdc-tab" role="tab" aria-selected="true" tabindex="0">
+            <span class="mdc-tab__content">
+              <!-- <span class="mdc-tab__icon material-icons" aria-hidden="true">favorite</span> -->
+              <span class="mdc-tab__text-label">Atmosphere</span>
+            </span>
+            <span class="mdc-tab-indicator">
+              <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+            </span>
+            <span class="mdc-tab__ripple"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="images">
+  <ul class="mdc-image-list mdc-image-list--masonry my-masonry-image-list">
+    <li class="mdc-image-list__item match">
+      <img class="mdc-image-list__image" src="images/correa.png" title="Correa">
+    </li>
+    <li class="mdc-image-list__item atmosphere">
+      <img class="mdc-image-list__image" src="images/derby.png" title="Derby">
+    </li>
+    <li class="mdc-image-list__item match">
+      <img class="mdc-image-list__image" src="images/grizouuu.png" title="Grizouuu">
+    </li>
+    <li class="mdc-image-list__item atmosphere">
+      <img class="mdc-image-list__image" src="images/kampioen.png" title="Kampioen">
+    </li>
+    <li class="mdc-image-list__item match">
+      <img class="mdc-image-list__image" src="images/molina.png" title="Molina">
+    </li>
+    <li class="mdc-image-list__item atmosphere">
+      <img class="mdc-image-list__image" src="images/tifo.png" title="Tifo">
+    </li>
+    <li class="mdc-image-list__item training">
+      <img class="mdc-image-list__image" src="images/trainingKuip.png" title="Training bij Kakkerlakken">
+    </li>
+    <li class="mdc-image-list__item atmosphere">
+      <img class="mdc-image-list__image" src="images/vlag.png" title="Vlag">
+    </li>
+    <li class="mdc-image-list__item training">
+      <img class="mdc-image-list__image" src="images/witsel.png" title="Witsel">
+    </li>
+    <li class="mdc-image-list__item training">
+      <img class="mdc-image-list__image" src="images/traing.png" title="Training">
+    </li>
+    <li class="mdc-image-list__item atmosphere">
+      <img class="mdc-image-list__image" src="images/tifo2.png" title="Tifo 2">
+    </li>
+  </ul>
+</div>
+</main>
+
+<!-- Sheet -->
+
+<section class="sheet sheet-out-of-view sheet-training" id="sheet-training">
+  
+  <header class="mdc-top-app-bar relative">
+    <div class="mdc-top-app-bar__row">
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+        <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button close" aria-label="Open navigation menu">close</button>
+        <span class="mdc-top-app-bar__title sheet-title">Image name</span>
+      </section>
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+        <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Share">share</button>
+        <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">settings</button>
+      </section>
+    </div>
+  </header>
+
+  <main>
+    <img  class="image-sheet" src="images/molina.png" alt="Molina">
+  </main>
+
+  <footer>
+    <div class="mdc-tab-bar" role="tablist">
+      <div class="mdc-tab-scroller">
+        <div class="mdc-tab-scroller__scroll-area">
+          <div class="mdc-tab-scroller__scroll-content">
+            <button class="mdc-tab" role="tab" aria-selected="true" tabindex="0">
+              <span class="mdc-tab__content">
+                <span class="mdc-tab__icon material-icons" aria-hidden="true">thumb_up</span>
+              </span>
+              <span class="mdc-tab-indicator">
+                <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+              </span>
+              <span class="mdc-tab__ripple"></span>
+            </button>
+            <button class="mdc-tab" role="tab" aria-selected="true" tabindex="0">
+              <span class="mdc-tab__content">
+                <span class="mdc-tab__icon material-icons" aria-hidden="true">favorite</span>
+              </span>
+              <span class="mdc-tab-indicator">
+                <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+              </span>
+              <span class="mdc-tab__ripple"></span>
+            </button>
+            <button class="mdc-tab" role="tab" aria-selected="true" tabindex="0">
+              <span class="mdc-tab__content">
+                <span class="mdc-tab__icon material-icons" aria-hidden="true">thumb_down</span>
+              </span>
+              <span class="mdc-tab-indicator">
+                <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+              </span>
+              <span class="mdc-tab__ripple"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+   </footer>
+
+</section>
+
+<!-- Vanaf hier custom Javascript-->
+<script src="script.js"></script>
+</body>
+
+</html>

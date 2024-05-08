@@ -1,0 +1,85 @@
+:root {
+    --mdc-theme-primary: #E94343;
+}
+
+.relative {
+    position: relative !important;
+}
+
+body {
+    height: 100vh;
+}
+
+.logo {
+    height: 200px;
+    width: 200px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img {
+    height: 150px;
+    width: 150px;
+}
+
+.mdc-list-item {
+    margin: 5px;
+    padding: 5px;
+}
+
+.mdc-tab-bar {
+    background-color: lightgrey;
+}
+
+.mdc-image-list--masonry {
+    column-count: 2;
+}
+
+.mdc-image-list__item {
+    margin-bottom: 1em;
+}
+
+.hidden {
+    display: none;
+}
+
+.sheet {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    margin-left: 0;
+    background-color: #2e2e2e;
+    transition: 0.3s ease;
+}
+
+.sheet-out-of-view {
+    margin-left: -100%;
+}
+
+.sheet main {
+    min-height: calc(100vh - 56px - 48px);
+}
+
+.sheet img {
+    width: 100%;
+    height: auto;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer .mdc-tab-bar {
+    background-color: var(--mdc-theme-primary);}
+
+footer .mdc-tab__icon {
+    color: white !important;
+}
+
+.sheetOpen{
+    overflow: hidden;
+}
